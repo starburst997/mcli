@@ -63,11 +63,13 @@ class Macro
 		{
 			if (!Context.defined("use_rtti_doc"))
 				throw new Error("mini cli will only work when -D use_rtti_doc is defined", Context.currentPos());
+			#if (haxe_ver < 4)
 			Context.onMacroContextReused(function()
 			{
 				resetContext();
 				return true;
 			});
+			#end
 			resetContext();
 			once = true;
 		}
